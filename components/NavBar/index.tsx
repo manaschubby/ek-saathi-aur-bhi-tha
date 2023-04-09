@@ -57,6 +57,7 @@ const navItems : Array<navItem> = [
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [logo, setLogo] = React.useState(false);
   const [selected, setSelected] = React.useState(5);
   const router = useRouter()  
   const handleDrawerToggle = () => {
@@ -88,13 +89,13 @@ function Navbar(props) {
   return (
     <Box position={"static"} sx={{ display: "flex" }}>
       <CssBaseline />
-      <ElevationScroll {...props} >
+      <ElevationScroll setLogo={setLogo} {...props} >
         <AppBar sx={{ background: "none" }} component="nav">
           <Toolbar>
             <Typography 
               sx={styles.title}
             >
-              EK SAATHI AUR BHI THA
+              {logo ? <>EK SAATHI AUR BHI THA</> : <></>}
             </Typography>
             <Typography sx={{ flexGrow: 1 }}></Typography>
             <Box

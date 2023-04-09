@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { useScrollTrigger } from "@mui/material";
 import colors from "../../utils/colors";
 import rgba from "../../utils/hexTool";
+
 interface ElevationScrollProps {
   children : React.ReactSVGElement,
   window: any,
-  setLogo: React.Dispatch<string>
+  setLogo: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function ElevationScroll(props: ElevationScrollProps) {
@@ -16,7 +17,10 @@ export default function ElevationScroll(props: ElevationScrollProps) {
       threshold: 0,
       target: window ? window() : undefined,
     });
-  
+    useEffect(()=>{
+      props.setLogo(trigger)
+    }, [trigger])
+
     return React.cloneElement(children, {
       elevation: trigger ? 10 : 0,
       sx: trigger ? {backdropFilter:"blur(10px)",backgroundColor: rgba(colors.battleshipGray, 0.6)} : {background:"none"},
