@@ -41,15 +41,15 @@ const navItems : Array<navItem> = [
     link:"/#Team"
   },
   {
-    name:"The List",
+    name:"We Were Brothers",
     link:"/#Contact%20Us"
   },
   {
-    name:"Stories",
+    name:"Memories",
     link:"/#Contact%20Us"
   },
   {
-    name:"Contribute",
+    name:"Tell a Tale",
     link:"/#Contact%20Us"
   },
 ];

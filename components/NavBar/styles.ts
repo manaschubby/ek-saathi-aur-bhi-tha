@@ -14,14 +14,9 @@ const styles : Record<string,SxProps> = {
     height: { xs: 50, sm: 100 },
     
   },
-  bits:{
-    pl:0,
-    mr: 1,
-    height: { xs: 50, sm: 100 },
-    
-  },
   links:{
-    display: { xs: "none", sm: "none", md: "block", lg: "block" },
+    display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
+    justifyContent:"flex-end"
   },
   linksText:{
     mr: 4,
