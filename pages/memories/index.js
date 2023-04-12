@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Template from '../template';
 import { Box, Container, Typography } from '@mui/material';
-import styles from "./styles"
+import styles from "../../components/Stories/styles"
 import { useEffect } from 'react';
 import axios from 'axios';
 import StoryCard from "../../components/Stories/StoryCard"
@@ -28,7 +28,7 @@ const Index = () => {
                 <Typography sx={styles.heading}>MEMORIES</Typography>
                 <Container sx={styles.cardView} component={"div"}>
                 {stories && stories.map((story, index)=>{
-                    return <StoryCard key={index} styles={styles} />
+                    return <StoryCard key={index}/>
                 })}
                 
                 </Container>
