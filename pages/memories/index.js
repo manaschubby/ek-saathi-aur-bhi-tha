@@ -28,7 +28,7 @@ const Index = () => {
                 <Typography sx={styles.heading}>MEMORIES</Typography>
                 <Container sx={styles.cardView} component={"div"}>
                 {stories && stories.map((story, index)=>{
-                    return <StoryCard styles={styles} />
+                    return <StoryCard key={index} styles={styles} />
                 })}
                 
                 </Container>
