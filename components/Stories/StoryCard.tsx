@@ -7,9 +7,9 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import StarsIcon from '@mui/icons-material/Stars';
 import FlagIcon from '@mui/icons-material/Flag';
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import styles from "./styles";
 
 export default function StoryCard(props) {
-    const {styles} = props
     const router = useRouter()
     const handleCardClick = () => {
         //router.push("/")
