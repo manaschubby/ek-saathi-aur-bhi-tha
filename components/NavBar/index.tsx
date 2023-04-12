@@ -26,6 +26,7 @@ import ElevationScroll from "./ElevationScroll";
 import styles from "./styles"
 import { useRouter } from "next/router";
 import colors from "../../utils/colors";
+import Image from "next/image";
 
 const drawerWidth = 240;
 
@@ -38,19 +39,19 @@ interface navItem {
 const navItems : Array<navItem> = [ 
   {
     name:"Home", 
-    link:"/#Team"
+    link:"/"
   },
   {
     name:"We Were Brothers",
-    link:"/#Contact%20Us"
+    link:"/thelist"
   },
   {
     name:"Memories",
-    link:"/#Contact%20Us"
+    link:"/memories"
   },
   {
     name:"Tell a Tale",
-    link:"/#Contact%20Us"
+    link:"/share"
   },
 ];
 
@@ -72,6 +73,8 @@ function Navbar(props) {
   })
   const drawer = (
     <Box sx={styles.drawer}>
+      <Image alt="inMemory" src={"/assets/inMemory.webp"} width={200} height={100}/>
+      <Typography flexGrow={1}/>
       <List onClick={handleDrawerToggle}>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
@@ -87,13 +90,14 @@ function Navbar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box position={"static"} sx={{ display: "flex" }}>
+    <Box position={"static"} sx={{ display: "flex", mr:0 }}>
       <CssBaseline />
       <ElevationScroll setLogo={setLogo} {...props} >
-        <AppBar sx={{ background: "none" }} component="nav">
-          <Toolbar>
+        <AppBar sx={{ background: "none", mr:0, pr:0 }} component="nav">
+          <Toolbar sx={{mr:0, pr:0}}>
             <Typography 
               sx={styles.title}
+              onClick={()=>router.push("/")}
             >
               {logo ? <>EK SAATHI AUR BHI THA</> : <></>}
             </Typography>
@@ -111,7 +115,6 @@ function Navbar(props) {
                 </Button>
               ))}
             </Box>
-
             <IconButton
               size="large"
               aria-label="menu"
@@ -138,6 +141,7 @@ function Navbar(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            justifyContent:"space-around"
           }}
         >
           {drawer}

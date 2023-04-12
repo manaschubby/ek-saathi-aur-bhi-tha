@@ -19,15 +19,17 @@ const styles : Record<string,SxProps> = {
     justifyContent:"flex-end"
   },
   linksText:{
-    mr: 4,
+    fontFamily:"Cabin",
+    mr: 2,
     fontSize: "1.25rem",
     fontWeight: "600",
     color: colors.black,
+    textAlign:"center"
   },
   linksTextSelected:{
     mr: 4,
     fontSize: "1.25rem",
-    fontWeight: "200",
+    fontWeight: "600",
     color: colors.black,
     borderColor:colors.black,
     border:"solid",
@@ -39,7 +41,8 @@ const styles : Record<string,SxProps> = {
     display: { xs: "flex", sm: "flex", md: "none", lg: "none" },
     color: colors.black,
   },
-  drawer:{ 
+  drawer:{
+    justifyContent:"space-around",
     textAlign: "center",
     my:"auto",
     fontSize: "1.25rem",

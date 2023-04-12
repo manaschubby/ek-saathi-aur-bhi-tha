@@ -32,6 +32,9 @@ const officerSchema = new mongoose.Schema({
     },
     image:{
         type: String,
+    },
+    arm:{
+        type:String
     }
   }); 
   
