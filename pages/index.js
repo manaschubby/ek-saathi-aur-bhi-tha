@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import styles from "../styles/Home.module.scss";
 import Template from "./template";
 import MainPanel from "../components/MainPanel";
 import Officers from "../components/Officers";
