@@ -72,7 +72,7 @@ const MainLandingPanel = () => {
 					) : (
 						<>
 							<PlayArrowSharp sx={{ mr: 2 }} />
-							Play "The Last Post" for your comrade
+							Play &quot;The Last Post&quot; for your comrade
 						</>
 					)}
 				</Button>
