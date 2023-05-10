@@ -78,7 +78,7 @@ const MainLandingPanel = () => {
 				</Button>
 				{!loading ? (
 					<Typography variant="h6" sx={styles.lastPost}>
-						The Last Post has been played{" "}
+						The Last Post has been played{` `}
 						<div
 							style={{ color: "white", display: "inline" }}
 						>{`${plays}`}</div>{" "}
