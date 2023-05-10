@@ -41,13 +41,7 @@ const MainLandingPanel = () => {
 	};
 	return (
 		<Container sx={styles.mainPanel}>
-			<video
-				ref={videoRef}
-				style={{ width: "0px", height: "0px" }}
-				autoPlay
-				loop
-				playsInline
-			>
+			<video ref={videoRef} style={{ width: "0px", height: "0px" }} playsInline>
 				<source src="/assets/lastpost.mp3" />
 			</video>
 			<Grid sx={styles.mainPanelGrid}>
