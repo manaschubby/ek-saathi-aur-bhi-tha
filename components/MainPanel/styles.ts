@@ -64,5 +64,12 @@ const styles: Record<any, SxProps> = {
 		px: 1,
 		backdropFilter: "blur(5px)",
 	},
+	alert: {
+		height: "max-content",
+		width: { xs: "80vw", sm: "auto" },
+		position: "fixed",
+		zIndex: 100,
+		top: { xs: 60, sm: 60 },
+	},
 };
 export default styles;

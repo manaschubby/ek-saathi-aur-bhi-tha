@@ -1,4 +1,12 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import {
+	Alert,
+	Box,
+	Button,
+	Container,
+	Grid,
+	Slide,
+	Typography,
+} from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles";
 import axios from "axios";
@@ -7,6 +15,7 @@ import "../../styles/Home.module.scss";
 import Image from "next/image";
 import colors from "../../utils/colors";
 const MainLandingPanel = () => {
+	const [alertShown, setAlertShown] = useState(false);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [plays, setPlays] = useState<Number>();
 	const [playing, setPlaying] = useState(false);
@@ -24,6 +33,15 @@ const MainLandingPanel = () => {
 		setLoading(true);
 	};
 	const videoRef = useRef<HTMLVideoElement>();
+	const handleEnded = () => {
+		setPlayed(false);
+		setPlaying(false);
+		videoRef.current.pause();
+		setAlertShown(true);
+		setTimeout(() => {
+			setAlertShown(false);
+		}, 8000);
+	};
 	const handlePlay = () => {
 		if (!playing) {
 			videoRef.current.play();
@@ -41,9 +59,26 @@ const MainLandingPanel = () => {
 	};
 	return (
 		<Container sx={styles.mainPanel}>
-			<video ref={videoRef} style={{ width: "0px", height: "0px" }} playsInline>
+			<video
+				title="The Last Post"
+				ref={videoRef}
+				onEnded={handleEnded}
+				style={{ width: "0px", height: "0px" }}
+				playsInline
+			>
 				<source src="/assets/lastpost.mp3" />
 			</video>
+			<Slide direction="down" in={alertShown} mountOnEnter unmountOnExit>
+				<Alert
+					elevation={15}
+					sx={styles.alert}
+					variant="filled"
+					color="success"
+				>
+					Thank You for Playing the Last Post. Please leave a story at the
+					stories page.
+				</Alert>
+			</Slide>
 			<Grid sx={styles.mainPanelGrid}>
 				<Typography variant="h6" sx={styles.mainPanelDesc}>
 					Memorial of the Band of Brothers
