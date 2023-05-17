@@ -12,7 +12,13 @@ const Officers = (props: OfficersProps) => {
 			)}
 			<Container sx={styles.cardView} component={"div"}>
 				{props.officers.map((officer, index) => {
-					return <OfficerCard key={index} {...officer} />;
+					return (
+						<OfficerCard
+							key={index}
+							onClick={props.onClick ? props.onClick : null}
+							{...officer}
+						/>
+					);
 				})}
 			</Container>
 		</Box>

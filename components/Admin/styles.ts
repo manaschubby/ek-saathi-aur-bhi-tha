@@ -1,6 +1,7 @@
 import { SxProps } from "@mui/material";
 import { height } from "@mui/system";
 import colors from "../../utils/colors";
+import rgba from "../../utils/hexTool";
 
 export const styles: Record<any, SxProps> = {
 	officerPanel: {
@@ -35,10 +36,21 @@ export const styles: Record<any, SxProps> = {
 		top: 100,
 		height: "80vh",
 		overflow: "scroll",
+		scrollBehavior: "smooth",
 		width: "80vw",
-		backgroundColor: "white",
-		borderRadius: 2,
+		backgroundColor: rgba("#ffffff", 0.6),
+		borderRadius: "2%",
 		display: "flex",
+		alignItems: "center",
 		justifyContent: "center",
+		flexDirection: "column",
+		backdropFilter: "blur(20px)",
+		gap: 2,
+		pt: "50vh",
+	},
+	addButton: {
+		color: colors.black,
+		fontSize: "large",
+		flexGrow: 0.3,
 	},
 };

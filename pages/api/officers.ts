@@ -61,11 +61,9 @@ export default async function handler(req: NextApiRequest, res) {
 						req.query.id,
 						req.body
 					);
-
 					if (!officer) {
 						return res.status(404).json({ msg: "Officer not found" });
 					}
-
 					const updatedOfficer = await Officer.findById(req.query.id);
 					res.status(200).json(updatedOfficer);
 				} catch (err) {

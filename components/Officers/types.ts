@@ -10,8 +10,11 @@ export interface OfficerCardProps {
 	reasonOfDeath?: string;
 	awards?: string;
 	arm?: string;
+	_id?: string;
+	onClick?: (officer: OfficerCardProps) => void;
 }
 export interface OfficersProps {
 	officers: Array<OfficerCardProps>;
 	noMemory?: boolean;
+	onClick?: (officer: OfficerCardProps) => void;
 }

@@ -8,11 +8,14 @@ import useData from "../../../hooks/useData";
 
 export default function AddOfficers() {
 	const verifying = useVerify();
-	const { officers, loading } = useData();
+	const [reload, setReload] = useState(false);
+	const { officers, loading } = useData(reload, setReload);
 	return (
 		<Box>
 			<Template />
-			{!verifying && <OfficerPanel officers={officers} />}
+			{!verifying && !loading && (
+				<OfficerPanel setReload={setReload} officers={officers} />
+			)}
 		</Box>
 	);
 }

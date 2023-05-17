@@ -1,7 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function useData() {
+export default function useData(
+	reload?: boolean,
+	setReload?: React.Dispatch<React.SetStateAction<boolean>>
+) {
 	const [officers, setOfficers] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [stories, setStories] = useState();
@@ -24,6 +27,14 @@ export default function useData() {
 		loadOfficers();
 		loadStories();
 	}, []);
+	if (setReload) {
+		useEffect(() => {
+			if (reload) {
+				loadOfficers();
+				setReload(false);
+			}
+		}, [reload]);
+	}
 
 	return {
 		officers,
