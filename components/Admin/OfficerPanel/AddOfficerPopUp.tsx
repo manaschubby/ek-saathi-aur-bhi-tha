@@ -34,14 +34,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 	const wrapperRef = useRef();
 	const [edited, setEdited] = useState(true);
 	useOutsideAlerter(wrapperRef, props.setShown, edited);
-	function genRef(): Array<MutableRefObject<any>> {
-		const refs = [];
-		officer(props.officer).forEach((value) => {
-			const ref = useRef();
-			refs.push(ref);
-		});
-		return refs;
-	}
+
 	useEffect(() => {
 		if (!props.new) {
 			const officer = props.officer;
@@ -74,7 +67,17 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 		transformRefs(refs, true);
 		props.setShown(false);
 	};
-	const refs = genRef();
+	const refs = [
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+		useRef(),
+	];
 	const imageRef = useRef<HTMLInputElement>();
 	const [image, setImage] = useState("");
 	return (
