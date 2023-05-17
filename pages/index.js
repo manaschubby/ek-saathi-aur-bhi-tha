@@ -6,18 +6,20 @@ import MainPanel from "../components/MainPanel";
 import Officers from "../components/Officers";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useData from "../hooks/useData";
 export default function Home() {
-	const [officers, setOfficers] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const loadOfficers = () => {
-		axios.get("/api/officers").then((response) => {
-			setOfficers(response.data);
-			setLoading(false);
-		});
-	};
-	useEffect(() => {
-		loadOfficers();
-	}, []);
+	const { officers, loading } = useData();
+	// const [officers, setOfficers] = useState([]);
+	// const [loading, setLoading] = useState(true);
+	// const loadOfficers = () => {
+	// 	axios.get("/api/officers").then((response) => {
+	// 		setOfficers(response.data);
+	// 		setLoading(false);
+	// 	});
+	// };
+	// useEffect(() => {
+	// 	loadOfficers();
+	// }, []);
 	return (
 		<div className={styles.container} style={{ backgroundColor: "#B4B89E" }}>
 			<Head>

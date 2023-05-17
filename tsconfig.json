@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/plays.js"  ],
+, "pages/api/plays.js", "pages/api/admin/login.ts", "backend/models/admin.js"  ],
   "exclude": [
     "node_modules"
   ]
