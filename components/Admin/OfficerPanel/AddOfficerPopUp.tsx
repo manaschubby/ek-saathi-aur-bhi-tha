@@ -39,11 +39,15 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 		if (!props.new) {
 			const officer = props.officer;
 			transformRefs(refs, false, officer);
+			nameRef.current.value = officer.name;
 		}
 	}, [props.officer]);
 	const handleSave = () => {
 		if (!props.new) {
-			const officer = getOfficer(refs, props.officer.name);
+			if (nameRef.current.value == "") {
+				return alert("Enter atleast a name");
+			}
+			const officer = getOfficer(refs, nameRef.current.value);
 			console.log(officer);
 			setLoading(true);
 			axios
@@ -61,23 +65,45 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 					alert("Error Saving");
 				});
 		} else {
+			if (nameRef.current.value == "") {
+				return alert("Enter atleast a name");
+			}
+			const officer = getOfficer(refs, nameRef.current.value);
+			console.log(officer);
+			setLoading(true);
+			axios
+				.post(`/api/officers`, officer, {
+					headers: {
+						Authorization: "AdminPage",
+					},
+				})
+				.then((response) => {
+					setLoading(false);
+					props.setReload(true);
+					props.setShown(false);
+				})
+				.catch(() => {
+					alert("Error Saving");
+				});
 		}
 	};
 	const handleCancel = () => {
 		transformRefs(refs, true);
 		props.setShown(false);
+		props.setNew(false);
 	};
 	const refs = [
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
-		useRef(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
+		useRef<HTMLInputElement>(),
 	];
+	const nameRef = useRef<HTMLInputElement>();
 	const imageRef = useRef<HTMLInputElement>();
 	const [image, setImage] = useState("");
 	return (
@@ -103,6 +129,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			</Box>
 
 			<Image src={image} width={100} height={100} alt={"NO Image Selected"} />
+			<TextField label={"Name"} inputRef={nameRef} focused />
 			{officer(props.officer).map((argument, index) => {
 				return (
 					<TextField
