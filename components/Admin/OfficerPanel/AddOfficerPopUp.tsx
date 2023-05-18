@@ -81,9 +81,11 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 					setLoading(false);
 					props.setReload(true);
 					props.setShown(false);
+					props.setNew(false);
 				})
 				.catch(() => {
 					alert("Error Saving");
+					props.setNew(false);
 				});
 		}
 	};
