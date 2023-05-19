@@ -10,7 +10,14 @@ export default function Stories(props: StoryProps) {
 			{props.stories &&
 				props.stories.map((story, index) => {
 					if (story.verified == props.verified) {
-						return <StoryCard story={story} key={index} />;
+						return (
+							<StoryCard
+								story={story}
+								delete={props.delete}
+								verify={props.verify}
+								key={index}
+							/>
+						);
 					}
 				})}
 		</Container>

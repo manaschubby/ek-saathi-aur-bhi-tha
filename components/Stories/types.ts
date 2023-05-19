@@ -14,12 +14,17 @@ export interface Story {
 	createdAt: Date;
 	email: string;
 	verified: boolean;
+	_id?: string;
 }
 export interface StoryCardProps {
 	story: Story;
+	delete?: boolean;
+	verify?: boolean;
 }
 
 export interface StoryProps {
 	stories: Array<Story>;
 	verified?: boolean;
+	delete?: boolean;
+	verify?: boolean;
 }
