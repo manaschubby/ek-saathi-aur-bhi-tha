@@ -1,5 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Story } from "../components/Stories/types";
+
+export const validateOfficers = async (stories: Array<Story>) => {
+	const newStories = [];
+	for (const story of stories) {
+		let newStory = story;
+		const officer1 = await axios.get("/api/officers/", {
+			params: {
+				id: story.officer,
+			},
+		});
+		newStory.officer = officer1.data.rank
+			? officer1.data.rank + " " + officer1.data.name
+			: officer1.data.name;
+		newStories.push(newStory);
+	}
+	return newStories;
+};
 
 export default function useData(
 	reload?: boolean,
@@ -7,7 +25,7 @@ export default function useData(
 ) {
 	const [officers, setOfficers] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [stories, setStories] = useState();
+	const [stories, setStories] = useState<Array<Story>>();
 	const loadOfficers = () => {
 		axios.get("/api/officers").then((response) => {
 			setOfficers(response.data);
@@ -20,7 +38,10 @@ export default function useData(
 			redirect: "follow",
 		};
 		axios.get("/api/stories", requestOptions).then((response) => {
-			setStories(response.data);
+			let stories = response.data;
+			validateOfficers(stories).then((stories) => {
+				setStories(stories);
+			});
 		});
 	};
 	useEffect(() => {

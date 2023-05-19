@@ -132,23 +132,41 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 
 			<Image src={image} width={100} height={100} alt={"NO Image Selected"} />
 			<TextField label={"Name"} inputRef={nameRef} focused />
-			{officer(props.officer).map((argument, index) => {
-				return (
-					<TextField
-						key={index}
-						inputProps={{
-							startAdornments: (
-								<InputAdornment position="start">
-									{argument.icon}
-								</InputAdornment>
-							),
-						}}
-						label={argument.title}
-						inputRef={refs[index]}
-						focused
-					/>
-				);
-			})}
+			{!props.new
+				? officer(props.officer).map((argument, index) => {
+						return (
+							<TextField
+								key={index}
+								inputProps={{
+									startAdornments: (
+										<InputAdornment position="start">
+											{argument.icon}
+										</InputAdornment>
+									),
+								}}
+								label={argument.title}
+								inputRef={refs[index]}
+								focused
+							/>
+						);
+				  })
+				: officer({ name: "" }).map((argument, index) => {
+						return (
+							<TextField
+								key={index}
+								inputProps={{
+									startAdornments: (
+										<InputAdornment position="start">
+											{argument.icon}
+										</InputAdornment>
+									),
+								}}
+								label={argument.title}
+								inputRef={refs[index]}
+								focused
+							/>
+						);
+				  })}
 			<Button color="success" variant="contained" onClick={handleSave}>
 				Save
 			</Button>

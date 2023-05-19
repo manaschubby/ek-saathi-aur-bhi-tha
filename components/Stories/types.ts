@@ -1,0 +1,25 @@
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { SxProps } from "@mui/material";
+
+interface Parameter {
+	icon: ReactJSXElement;
+	title: string;
+	value: any;
+}
+
+export interface Story {
+	officer: string;
+	author: string;
+	body: string;
+	createdAt: Date;
+	email: string;
+	verified: boolean;
+}
+export interface StoryCardProps {
+	story: Story;
+}
+
+export interface StoryProps {
+	stories: Array<Story>;
+	verified?: boolean;
+}
