@@ -15,6 +15,7 @@ export interface Story {
 	email: string;
 	verified: boolean;
 	_id?: string;
+	image?: string;
 }
 export interface StoryCardProps {
 	story: Story;

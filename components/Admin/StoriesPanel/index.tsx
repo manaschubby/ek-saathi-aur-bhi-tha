@@ -14,28 +14,31 @@ export default function StoriesAdminPanel(props: StoriesAdminPanelProps) {
 	return (
 		<Box sx={styles.officerPanel}>
 			{props.stories && (
-				<Box sx={styles.officerPanelTitle}>
-					<Typography variant="h3" flexGrow={1} />
-					<Typography variant="h3" textAlign={"center"} flexGrow={0.7}>
-						Verify stories
-					</Typography>
-					<Stories
-						verified={false}
-						delete
-						verify
-						stories={props.stories.filter((story) => !story.verified)}
-					/>
-					<Typography variant="h3" textAlign={"center"} flexGrow={0.7}>
-						Verified stories
-					</Typography>
-					<Stories
-						verified={true}
-						delete
-						stories={props.stories.filter((story) => {
-							return story.verified;
-						})}
-					/>
-				</Box>
+				<>
+					<Box sx={styles.officerPanelTitle}>
+						<Typography variant="h3" textAlign={"center"} flexGrow={1}>
+							Verify stories
+						</Typography>
+					</Box>
+					<Box>
+						<Stories
+							verified={false}
+							delete
+							verify
+							stories={props.stories.filter((story) => !story.verified)}
+						/>
+						<Typography variant="h3" textAlign={"center"} flexGrow={0.7}>
+							Verified stories
+						</Typography>
+						<Stories
+							verified={true}
+							delete
+							stories={props.stories.filter((story) => {
+								return story.verified;
+							})}
+						/>
+					</Box>
+				</>
 			)}
 		</Box>
 	);

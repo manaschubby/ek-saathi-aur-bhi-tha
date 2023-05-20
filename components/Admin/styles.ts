@@ -15,7 +15,6 @@ export const styles: Record<any, SxProps> = {
 	},
 	officerPanelTitle: {
 		display: "flex",
-		flexDirection: "column",
 		width: "100%",
 	},
 	loginPanel: {

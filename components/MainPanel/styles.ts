@@ -7,8 +7,8 @@ const styles: Record<any, SxProps> = {
 		minWidth: "100vw",
 		pt: 10,
 		display: "flex",
-		backgroundImage: `url("/assets/mainPanelBG.webp")`,
-		backgroundPosition: "center",
+		backgroundImage: `url("/assets/IMA.png")`,
+		backgroundPosition: "top",
 		backgroundSize: "cover",
 	},
 	mainPanelGrid: {

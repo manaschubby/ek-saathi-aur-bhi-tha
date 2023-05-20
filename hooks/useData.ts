@@ -14,6 +14,13 @@ export const validateOfficers = async (stories: Array<Story>) => {
 		newStory.officer = officer1.data.rank
 			? officer1.data.rank + " " + officer1.data.name
 			: officer1.data.name;
+		if (officer1.data.image) {
+			newStory.image =
+				officer1.data.image +
+				"-/preview/938x432/-/quality/smart/-/format/auto/";
+		} else {
+			newStory.image = "/assets/Placeholder.jpeg";
+		}
 		newStories.push(newStory);
 	}
 	return newStories;
