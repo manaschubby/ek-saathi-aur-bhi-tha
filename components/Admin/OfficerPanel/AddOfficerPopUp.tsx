@@ -20,6 +20,7 @@ import {
 } from "../../Officers/OfficerCard/list";
 import Image from "next/image";
 import axios from "axios";
+import { client } from "../../../client";
 
 interface OfficerPopUpProps {
 	officer?: OfficerCardProps;
@@ -42,6 +43,40 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			nameRef.current.value = officer.name;
 		}
 	}, [props.officer]);
+	const push = (officer: OfficerCardProps) => {
+		axios
+			.put(`/api/officers/?id=${props.officer._id}`, officer, {
+				headers: {
+					Authorization: "AdminPage",
+				},
+			})
+			.then((response) => {
+				setLoading(false);
+				props.setReload(true);
+				props.setShown(false);
+			})
+			.catch(() => {
+				alert("Error Saving");
+			});
+	};
+	const create = (officer: OfficerCardProps) => {
+		axios
+			.post(`/api/officers`, officer, {
+				headers: {
+					Authorization: "AdminPage",
+				},
+			})
+			.then((response) => {
+				setLoading(false);
+				props.setReload(true);
+				props.setShown(false);
+				props.setNew(false);
+			})
+			.catch(() => {
+				alert("Error Saving");
+				props.setNew(false);
+			});
+	};
 	const handleSave = () => {
 		if (!props.new) {
 			if (nameRef.current.value == "") {
@@ -50,20 +85,22 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			const officer = getOfficer(refs, nameRef.current.value);
 			console.log(officer);
 			setLoading(true);
-			axios
-				.put(`/api/officers/?id=${props.officer._id}`, officer, {
-					headers: {
-						Authorization: "AdminPage",
-					},
-				})
-				.then((response) => {
-					setLoading(false);
-					props.setReload(true);
-					props.setShown(false);
-				})
-				.catch(() => {
-					alert("Error Saving");
-				});
+			if (image != "") {
+				const onProgress = ({ isComputable, value }) => {
+					alert(
+						`Uploading has started. Window will reload on succesfull upload. Progress = ${value}%`
+					);
+				};
+				client
+					.uploadFile(imageRef.current.files[0], { onProgress })
+					.then((file) => {
+						const baseURL = "https://ucarecdn.com/";
+						officer.image = baseURL + file.uuid + "/";
+						push(officer);
+					});
+				return;
+			}
+			push(officer);
 		} else {
 			if (nameRef.current.value == "") {
 				return alert("Enter atleast a name");
@@ -71,22 +108,23 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			const officer = getOfficer(refs, nameRef.current.value);
 			console.log(officer);
 			setLoading(true);
-			axios
-				.post(`/api/officers`, officer, {
-					headers: {
-						Authorization: "AdminPage",
-					},
-				})
-				.then((response) => {
-					setLoading(false);
-					props.setReload(true);
-					props.setShown(false);
-					props.setNew(false);
-				})
-				.catch(() => {
-					alert("Error Saving");
-					props.setNew(false);
-				});
+			if (image != "") {
+				console.log(process.env.PUBLICKEY);
+				const onProgress = ({ isComputable, value }) => {
+					alert(
+						`Uploading has started. Window will reload on succesfull upload. Progress = ${value}%`
+					);
+				};
+				client
+					.uploadFile(imageRef.current.files[0], { onProgress })
+					.then((file) => {
+						const baseURL = "https://ucarecdn.com/";
+						officer.image = baseURL + file.uuid + "/";
+						create(officer);
+					});
+				return;
+			}
+			create(officer);
 		}
 	};
 	const handleCancel = () => {

@@ -12,6 +12,7 @@ const styles: Record<any, SxProps> = {
 		backgroundSize: "cover",
 		backgroundAttachment: "fixed",
 		backgroundRepeat: "no-repeat",
+		scrollbarWidth: "none",
 	},
 	heading: {
 		pt: 10,
@@ -38,7 +39,8 @@ const styles: Record<any, SxProps> = {
 		justifyContent: "center",
 		flexWrap: "nowrap",
 		flexFlow: "wrap",
-		overflow: "scroll",
+		overflow: "hidden",
+		scrollbarWidth: "none",
 	},
 	card: {
 		display: "flex",

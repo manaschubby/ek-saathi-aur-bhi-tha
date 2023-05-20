@@ -9,6 +9,7 @@ const styles: Record<any, SxProps> = {
 		flexDirection: "column",
 		alignItems: "center",
 		backgroundImage: `linear-gradient(to bottom, ${colors.sage} , ${colors.offRed},${colors.sage} , ${colors.bloodRed})`,
+		scrollbarWidth: "none",
 		// backgroundImage:"url('/assets/inMemory.webp')",
 		// backgroundSize:"contain",
 		// backgroundAttachment:"fixed",
@@ -42,8 +43,9 @@ const styles: Record<any, SxProps> = {
 		justifyContent: "center",
 		flexWrap: "nowrap",
 		flexFlow: "wrap",
-		overflow: "scroll",
+		overflow: "hidden",
 		backdropFilter: "blur(20px)",
+		scrollbarWidth: "none",
 	},
 	card: {
 		display: "flex",

@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.scss";
 import Template from "./template";
 import MainPanel from "../components/MainPanel";
 import Officers from "../components/Officers";
+import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useData from "../hooks/useData";
@@ -33,6 +34,7 @@ export default function Home() {
 			<Template />
 			<MainPanel />
 			{!loading && officers && <Officers officers={officers} />}
+			<Footer />
 		</div>
 	);
 }

@@ -24,7 +24,7 @@ export default function OfficerCard(props: OfficerCardProps) {
 			<CardActionArea onClick={handleCardClick}>
 				<CardMedia
 					sx={styles.avatar}
-					image={"http://localhost:3002/assets/mainPanelBG.jpeg"}
+					image={props.image ? props.image : "/assets/Placeholder.jpeg"}
 				/>
 				<CardContent>
 					<Typography sx={styles.name}>{props.name}</Typography>
