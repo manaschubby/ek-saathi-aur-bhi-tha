@@ -145,6 +145,10 @@ export function getOfficer(
 	}
 	return officer;
 }
+export const getEmptyFieldValue = (field: string) => {
+	switch (field) {
+	}
+};
 export const list = (props: OfficerCardProps) => {
 	return (
 		<>

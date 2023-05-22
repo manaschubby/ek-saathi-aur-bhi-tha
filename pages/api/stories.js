@@ -54,7 +54,7 @@ export default async function handler(req, res) {
 				// The "id" parameter exists in the URL
 				const { id } = req.query;
 				try {
-					const stories = await Story.findOneAndDelete(id);
+					const stories = await Story.findByIdAndDelete(id);
 					res.status(200).json(stories);
 				} catch (err) {
 					res.status(500).json({ error: "Server error" });

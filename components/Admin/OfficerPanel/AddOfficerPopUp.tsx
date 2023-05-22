@@ -14,6 +14,7 @@ import { AddBoxOutlined } from "@mui/icons-material";
 import colors from "../../../utils/colors";
 import useOutsideAlerter from "../../../hooks/useOutsideAlerter";
 import {
+	getEmptyFieldValue,
 	getOfficer,
 	officer,
 	transformRefs,
@@ -127,6 +128,9 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			create(officer);
 		}
 	};
+	const handleClearField = (field: string) => {
+		getEmptyFieldValue(field);
+	};
 	const handleCancel = () => {
 		transformRefs(refs, true);
 		props.setShown(false);
@@ -173,19 +177,28 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			{!props.new
 				? officer(props.officer).map((argument, index) => {
 						return (
-							<TextField
-								key={index}
-								inputProps={{
-									startAdornments: (
-										<InputAdornment position="start">
-											{argument.icon}
-										</InputAdornment>
-									),
-								}}
-								label={argument.title}
-								inputRef={refs[index]}
-								focused
-							/>
+							<Box display={"flex"}>
+								<TextField
+									key={index}
+									inputProps={{
+										startAdornments: (
+											<InputAdornment position="start">
+												{argument.icon}
+											</InputAdornment>
+										),
+									}}
+									label={argument.title}
+									inputRef={refs[index]}
+									focused
+								/>
+								<Button
+									color="error"
+									variant="contained"
+									onClick={() => handleClearField(argument.title)}
+								>
+									Clear Field
+								</Button>
+							</Box>
 						);
 				  })
 				: officer({ name: "" }).map((argument, index) => {

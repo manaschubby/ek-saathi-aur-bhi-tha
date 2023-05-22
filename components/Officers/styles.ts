@@ -59,12 +59,14 @@ const styles: Record<any, SxProps> = {
 		borderRadius: 3,
 		mb: 10,
 		minWidth: { xs: 350, sm: 400 },
+		textTransform: "uppercase",
 	},
 	avatar: {
 		mx: "auto",
-		height: 250,
 		borderColor: colors.black,
 		border: "solid",
+		maxHeight: 250,
+		objectFit: "contain",
 		borderWidth: "1px",
 	},
 	name: {
@@ -96,7 +98,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 400,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 	parameter_value: {
 		fontSize: { xs: "1rem", sm: "1.25rem" },
@@ -104,7 +106,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 600,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 };
 export default styles;

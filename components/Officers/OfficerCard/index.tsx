@@ -23,6 +23,7 @@ export default function OfficerCard(props: OfficerCardProps) {
 		<Card sx={styles.card}>
 			<CardActionArea onClick={handleCardClick}>
 				<CardMedia
+					component={"img"}
 					sx={styles.avatar}
 					image={
 						props.image
