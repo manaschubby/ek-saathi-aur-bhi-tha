@@ -31,7 +31,9 @@ export default function OfficerCard(props: OfficerCardProps) {
 					}
 				/>
 				<CardContent>
-					<Typography sx={styles.name}>{props.name}</Typography>
+					<Typography sx={styles.name}>
+						{props.rank} {props.name}
+					</Typography>
 					{list(props)}
 				</CardContent>
 			</CardActionArea>
