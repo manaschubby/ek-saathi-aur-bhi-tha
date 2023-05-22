@@ -19,5 +19,6 @@ export const styles: Record<any, SxProps> = {
 		flexDirection: "column",
 		gap: 2,
 		textAlign: "center",
+		textTransform: "uppercase",
 	},
 };

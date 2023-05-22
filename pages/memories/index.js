@@ -7,6 +7,7 @@ import axios from "axios";
 import StoryCard from "../../components/Stories/StoryCard";
 import useData from "../../hooks/useData";
 import Stories from "../../components/Stories/";
+import Footer from "../../components/Footer";
 const Index = () => {
 	const { stories } = useData();
 	return (
@@ -18,6 +19,7 @@ const Index = () => {
 					{stories && <Stories stories={stories} verified />}
 				</Container>
 			</Box>
+			<Footer />
 		</div>
 	);
 };

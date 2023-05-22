@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { styles } from "./styles";
 import colors from "../../utils/colors";
 import axios from "axios";
+import { Mail } from "@mui/icons-material";
 
 export default function Footer() {
 	const nameRef = useRef<HTMLInputElement>();
@@ -34,14 +35,14 @@ export default function Footer() {
 		<Box sx={styles.footerPanel}>
 			<Box sx={styles.contactUs}>
 				<Typography variant="h5" color={colors.bloodRed}>
-					Contact
+					Contact Us
 				</Typography>
-				<TextField inputRef={nameRef} required label="Name" />
-				<TextField inputRef={phoneNumber} required label="Phone Number" />
-				<TextField inputRef={messageRef} required label="Your Message" />
-				<Button onClick={handleSave} color="info" variant="outlined">
-					Send
-				</Button>
+				<Link
+					sx={{ color: colors.offRed, textDecoration: "none !important" }}
+					href="mailto:ek.saathi.aur.bhi.tha@gmail.com"
+				>
+					<Mail />
+				</Link>
 			</Box>
 			<Box sx={styles.contactUs}>
 				<Typography variant="h5" color={colors.bloodRed}>
@@ -64,6 +65,32 @@ export default function Footer() {
 					href="/share"
 				>
 					Tell a Tale
+				</Link>
+			</Box>
+			<Box sx={styles.contactUs}>
+				<Typography variant="h5" color={colors.bloodRed}>
+					External Links
+				</Typography>
+				<Link
+					sx={{ color: colors.offRed, textDecoration: "none !important" }}
+					href="https://nationalwarmemorial.gov.in/Default.php"
+					target="none"
+				>
+					National War Memorial
+				</Link>
+				<Link
+					sx={{ color: colors.offRed, textDecoration: "none !important" }}
+					href="https://indianarmy.nic.in/Site/FormTemplete/frmTempSimple.aspx?MnId=kD7Y5w9NjPwstN1li7RZig==&ParentID=3gWV+IxPb+ImTzXrsmGYEQ=="
+					target="none"
+				>
+					MARTYRS INDIAN ARMY PAGE
+				</Link>
+				<Link
+					sx={{ color: colors.offRed, textDecoration: "none !important" }}
+					href="https://indianarmy.nic.in/explore-army/war-memorial"
+					target="none"
+				>
+					WAR MEMORIALS across the country
 				</Link>
 				<Link
 					sx={{ color: colors.offRed, textDecoration: "none !important" }}

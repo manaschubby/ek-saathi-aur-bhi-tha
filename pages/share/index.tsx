@@ -17,6 +17,7 @@ import useData from "../../hooks/useData";
 import Stories from "../../components/Stories/";
 import { OfficerCardProps } from "../../components/Officers/types";
 import axios from "axios";
+import Footer from "../../components/Footer";
 const Share = () => {
 	const { officers, loading } = useData();
 	const [sending, setSending] = useState<boolean>(false);
@@ -93,7 +94,7 @@ const Share = () => {
 						<TextField
 							InputProps={colorWhite}
 							InputLabelProps={colorWhite}
-							label={"Your Email (optional)"}
+							label={"Your Email (optional) (not published)"}
 							inputRef={emailRef}
 						/>
 						<Select
@@ -108,7 +109,7 @@ const Share = () => {
 							{officers.map((officer: OfficerCardProps) => {
 								return (
 									<MenuItem key={officer._id} value={officer._id}>
-										{officer.name}
+										{officer.rank} {officer.name}
 									</MenuItem>
 								);
 							})}
@@ -132,6 +133,7 @@ const Share = () => {
 					</FormControl>
 				</Box>
 			)}
+			<Footer />
 		</div>
 	);
 };

@@ -73,12 +73,16 @@ export default function StoryCard(props: StoryCardProps) {
 					<Typography
 						variant="body2"
 						sx={{
-							lineBreak: "anywhere",
 							maxWidth: { xs: 350, sm: 400 },
+							lineBreak: "strict",
 						}}
 						gutterBottom
 					>
-						{viewFull ? props.story.body : props.story.body.slice(0, 100)}
+						{props.story.body.slice(0, 100).length === props.story.body.length
+							? props.story.body
+							: viewFull
+							? props.story.body
+							: props.story.body.slice(0, 100) + "..."}
 					</Typography>
 				</CardContent>
 			</CardActionArea>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Collapse, SxProps } from "@mui/material"
+import { Collapse, SxProps } from "@mui/material";
 
 //Material UI Components
 import AppBar from "@mui/material/AppBar";
@@ -23,134 +23,135 @@ import ElevationScroll from "./ElevationScroll";
 
 // Logo File
 
-import styles from "./styles"
+import styles from "./styles";
 import { useRouter } from "next/router";
 import colors from "../../utils/colors";
 import Image from "next/image";
 
 const drawerWidth = 240;
 
-
 interface navItem {
-  name: string,
-  link: string,
+	name: string;
+	link: string;
 }
 
-const navItems : Array<navItem> = [ 
-  {
-    name:"Home", 
-    link:"/"
-  },
-  {
-    name:"We Were Brothers",
-    link:"/thelist"
-  },
-  {
-    name:"Memories",
-    link:"/memories"
-  },
-  {
-    name:"Tell a Tale",
-    link:"/share"
-  },
+const navItems: Array<navItem> = [
+	{
+		name: "Home",
+		link: "/",
+	},
+	// {
+	//   name:"We Were Brothers",
+	//   link:"/thelist"
+	// },
+	{
+		name: "Memories",
+		link: "/memories",
+	},
+	{
+		name: "Tell a Tale",
+		link: "/share",
+	},
 ];
 
 function Navbar(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [logo, setLogo] = React.useState(false);
-  const [selected, setSelected] = React.useState(5);
-  const router = useRouter()  
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-  React.useEffect(()=>{
-    navItems.map((item, index) => {
-      if (item.link == location.pathname){
-        setSelected(index)
-      }
-    })
-  })
-  const drawer = (
-    <Box sx={styles.drawer}>
-      <Image alt="inMemory" src={"/assets/inMemory.webp"} width={200} height={100}/>
-      <Typography flexGrow={1}/>
-      <List onClick={handleDrawerToggle}>
-        {navItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <ListItemButton href={item.link} sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+	const { window } = props;
+	const [mobileOpen, setMobileOpen] = React.useState(false);
+	const [logo, setLogo] = React.useState(false);
+	const [selected, setSelected] = React.useState(5);
+	const router = useRouter();
+	const handleDrawerToggle = () => {
+		setMobileOpen((prevState) => !prevState);
+	};
+	React.useEffect(() => {
+		navItems.map((item, index) => {
+			if (item.link == location.pathname) {
+				setSelected(index);
+			}
+		});
+	});
+	const drawer = (
+		<Box sx={styles.drawer}>
+			<Image
+				alt="inMemory"
+				src={"/assets/inMemory.webp"}
+				width={200}
+				height={100}
+			/>
+			<Typography flexGrow={1} />
+			<List onClick={handleDrawerToggle}>
+				{navItems.map((item) => (
+					<ListItem key={item.name} disablePadding>
+						<ListItemButton href={item.link} sx={{ textAlign: "center" }}>
+							<ListItemText primary={item.name} />
+						</ListItemButton>
+					</ListItem>
+				))}
+			</List>
+		</Box>
+	);
+	const container =
+		window !== undefined ? () => window().document.body : undefined;
 
-  return (
-    <Box position={"static"} sx={{ display: "flex", mr:0 }}>
-      <CssBaseline />
-      <ElevationScroll setLogo={setLogo} {...props} >
-        <AppBar sx={{ background: "none", mr:0, pr:0 }} component="nav">
-          <Toolbar sx={{mr:0, pr:0}}>
-            <Typography 
-              sx={styles.title}
-              onClick={()=>router.push("/")}
-            >
-              {logo ? <>EK SAATHI AUR BHI THA</> : <></>}
-            </Typography>
-            <Typography sx={{ flexGrow: 1 }}></Typography>
-            <Box
-              sx={styles.links}
-            >
-              {navItems.map((item, index) => (
-                <Button
-                  key={item.name}
-                  sx={selected != index? styles.linksText : styles.linksTextSelected}
-                  href={item.link}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </Box>
-            <IconButton
-              size="large"
-              aria-label="menu"
-              onClick={handleDrawerToggle}
-              sx={styles.menu}
-            >
-              <MenuIcon fontSize="large" />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          anchor="right"
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-            justifyContent:"space-around"
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-    </Box>
-  );
+	return (
+		<Box position={"static"} sx={{ display: "flex", mr: 0 }}>
+			<CssBaseline />
+			<ElevationScroll setLogo={setLogo} {...props}>
+				<AppBar sx={{ background: "none", mr: 0, pr: 0 }} component="nav">
+					<Toolbar sx={{ mr: 0, pr: 0 }}>
+						<Typography sx={styles.title} onClick={() => router.push("/")}>
+							{logo ? <>EK SAATHI AUR BHI THA</> : <></>}
+						</Typography>
+						<Typography sx={{ flexGrow: 1 }}></Typography>
+						<Box sx={styles.links}>
+							{navItems.map((item, index) => (
+								<Button
+									key={item.name}
+									sx={
+										selected != index
+											? styles.linksText
+											: styles.linksTextSelected
+									}
+									href={item.link}
+								>
+									{item.name}
+								</Button>
+							))}
+						</Box>
+						<IconButton
+							size="large"
+							aria-label="menu"
+							onClick={handleDrawerToggle}
+							sx={styles.menu}
+						>
+							<MenuIcon fontSize="large" />
+						</IconButton>
+					</Toolbar>
+				</AppBar>
+			</ElevationScroll>
+			<Box component="nav">
+				<Drawer
+					container={container}
+					variant="temporary"
+					open={mobileOpen}
+					anchor="right"
+					onClose={handleDrawerToggle}
+					ModalProps={{
+						keepMounted: true, // Better open performance on mobile.
+					}}
+					sx={{
+						"& .MuiDrawer-paper": {
+							boxSizing: "border-box",
+							width: drawerWidth,
+						},
+						justifyContent: "space-around",
+					}}
+				>
+					{drawer}
+				</Drawer>
+			</Box>
+		</Box>
+	);
 }
-
-
 
 export default Navbar;
