@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res) {
 			} else {
 				// The "id" parameter is missing from the URL
 				try {
-					const officers = await Officer.find();
+					const officers = await Officer.find().sort({ name: "asc" });
 					res.status(200).json(officers);
 				} catch (err) {
 					console.error(err.message);
