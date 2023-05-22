@@ -128,8 +128,19 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			create(officer);
 		}
 	};
-	const handleClearField = (field: string) => {
-		getEmptyFieldValue(field);
+	const handleClearField = (field: string, index: number) => {
+		axios
+			.put("/api/officers", getEmptyFieldValue(field), {
+				params: {
+					id: props.officer._id,
+				},
+				headers: {
+					Authorization: "admin",
+				},
+			})
+			.then(() => {
+				refs[index].current.value = "";
+			});
 	};
 	const handleCancel = () => {
 		transformRefs(refs, true);
@@ -177,9 +188,8 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			{!props.new
 				? officer(props.officer).map((argument, index) => {
 						return (
-							<Box display={"flex"}>
+							<Box key={index} display={"flex"}>
 								<TextField
-									key={index}
 									inputProps={{
 										startAdornments: (
 											<InputAdornment position="start">
@@ -194,7 +204,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 								<Button
 									color="error"
 									variant="contained"
-									onClick={() => handleClearField(argument.title)}
+									onClick={() => handleClearField(argument.title, index)}
 								>
 									Clear Field
 								</Button>

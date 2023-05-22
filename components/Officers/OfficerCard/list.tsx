@@ -145,10 +145,64 @@ export function getOfficer(
 	}
 	return officer;
 }
-export const getEmptyFieldValue = (field: string) => {
+export function getEmptyFieldValue(field: string) {
 	switch (field) {
+		case "Service No.":
+			return {
+				$set: {
+					svc_no: "",
+				},
+			};
+		case "FORCE":
+			return {
+				$set: {
+					svc: "",
+				},
+			};
+		case "Rank":
+			return {
+				$set: {
+					rank: "",
+				},
+			};
+		case "Unit":
+			return {
+				$set: {
+					unit: "",
+				},
+			};
+		case "Arm/Regt":
+			return {
+				$set: {
+					arm: "",
+				},
+			};
+		case "Awards":
+			return {
+				$set: {
+					awards: "",
+				},
+			};
+		case "Operation":
+			return {
+				$set: {
+					operation: "",
+				},
+			};
+		case "Lost Him to":
+			return {
+				$set: {
+					reasonOfDeath: "",
+				},
+			};
+		case "Immortalized on":
+			return {
+				$set: {
+					yearOfDeath: "",
+				},
+			};
 	}
-};
+}
 export const list = (props: OfficerCardProps) => {
 	return (
 		<>
