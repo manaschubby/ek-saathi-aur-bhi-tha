@@ -20,6 +20,7 @@ const MainLandingPanel = () => {
 	const [plays, setPlays] = useState<Number>();
 	const [playing, setPlaying] = useState(false);
 	const [played, setPlayed] = useState(false);
+	const [title, setTitle] = useState("EK SAATHI AUR BHI THA");
 	useEffect(() => {
 		refresh();
 	}, []);
@@ -84,7 +85,7 @@ const MainLandingPanel = () => {
 					Memorial of the Band of Brothers
 				</Typography>
 				<Typography flex={1} variant="h3" sx={styles.mainPanelTitle}>
-					EK SAATHI AUR BHI THA
+					{title}
 				</Typography>
 				<Button
 					sx={playing ? styles.playButtonPlayed : styles.playButton}
