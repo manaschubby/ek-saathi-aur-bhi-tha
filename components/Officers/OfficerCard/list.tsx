@@ -117,31 +117,31 @@ export function getOfficer(
 		name: name,
 	};
 	if (refs[0].current.value != "") {
-		officer.svc_no = refs[0].current.value;
+		officer.svc_no = refs[0].current.value.trim();
 	}
 	if (refs[1].current.value) {
-		officer.svc = refs[1].current.value;
+		officer.svc = refs[1].current.value.trim();
 	}
 	if (refs[2].current.value) {
-		officer.rank = refs[2].current.value;
+		officer.rank = refs[2].current.value.trim();
 	}
 	if (refs[3].current.value) {
-		officer.unit = refs[3].current.value;
+		officer.unit = refs[3].current.value.trim();
 	}
 	if (refs[4].current.value) {
-		officer.arm = refs[4].current.value;
+		officer.arm = refs[4].current.value.trim();
 	}
 	if (refs[5].current.value) {
-		officer.awards = refs[5].current.value;
+		officer.awards = refs[5].current.value.trim();
 	}
 	if (refs[6].current.value) {
-		officer.operation = refs[6].current.value;
+		officer.operation = refs[6].current.value.trim();
 	}
 	if (refs[7].current.value) {
-		officer.reasonOfDeath = refs[7].current.value;
+		officer.reasonOfDeath = refs[7].current.value.trim();
 	}
 	if (refs[8].current.value) {
-		officer.yearOfDeath = refs[8].current.value;
+		officer.yearOfDeath = refs[8].current.value.trim();
 	}
 	return officer;
 }
