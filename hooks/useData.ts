@@ -59,6 +59,7 @@ export default function useData(
 		useEffect(() => {
 			if (reload) {
 				loadOfficers();
+				loadStories();
 				setReload(false);
 			}
 		}, [reload]);

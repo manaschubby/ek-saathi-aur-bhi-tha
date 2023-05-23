@@ -11,6 +11,7 @@ export default function useOutsideAlerter(
 		 */
 		function handleClickOutside(event) {
 			if (ref.current && !ref.current.contains(event.target)) {
+				event.preventDefault();
 				if (edited) {
 					alert("Please save the changes or press cancel");
 				} else {

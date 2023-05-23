@@ -21,6 +21,8 @@ export interface StoryCardProps {
 	story: Story;
 	delete?: boolean;
 	verify?: boolean;
+	edit?: boolean;
+	handleEdit?: (id: string) => void;
 }
 
 export interface StoryProps {
@@ -28,4 +30,6 @@ export interface StoryProps {
 	verified?: boolean;
 	delete?: boolean;
 	verify?: boolean;
+	edit?: boolean;
+	handleEdit?: (id: string) => void;
 }

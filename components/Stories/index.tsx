@@ -14,6 +14,8 @@ export default function Stories(props: StoryProps) {
 							<StoryCard
 								story={story}
 								delete={props.delete}
+								edit={props.edit}
+								handleEdit={props.handleEdit}
 								verify={props.verify}
 								key={index}
 							/>

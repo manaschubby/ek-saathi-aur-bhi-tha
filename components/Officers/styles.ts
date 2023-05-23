@@ -75,7 +75,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 800,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 	desc: {
 		textAlign: "center",

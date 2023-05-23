@@ -97,6 +97,14 @@ export default function StoryCard(props: StoryCardProps) {
 						Delete
 					</Button>
 				)}
+				{props.edit && (
+					<Button
+						variant="contained"
+						onClick={() => props.handleEdit(props.story._id)}
+					>
+						Edit
+					</Button>
+				)}
 			</CardActions>
 		</Card>
 	);
