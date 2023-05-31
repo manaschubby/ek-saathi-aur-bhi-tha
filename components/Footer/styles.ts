@@ -1,4 +1,5 @@
 import { SxProps } from "@mui/material";
+import colors from "../../utils/colors";
 
 export const styles: Record<any, SxProps> = {
 	footerPanel: {
@@ -9,6 +10,9 @@ export const styles: Record<any, SxProps> = {
 		justifyContent: "space-evenly",
 		pt: 4,
 		pb: 8,
+		backgroundImage: `url("/assets/footer.png")`,
+		backgroundPosition: "center",
+		backgroundSize: "cover",
 	},
 	contactUs: {
 		minWidth: {
@@ -20,5 +24,10 @@ export const styles: Record<any, SxProps> = {
 		gap: 2,
 		textAlign: "center",
 		textTransform: "uppercase",
+	},
+	footerLink: {
+		color: "#ffffff",
+		textDecoration: "none !important",
+		mixBlendMode: "difference",
 	},
 };

@@ -33,6 +33,7 @@ const drawerWidth = 240;
 interface navItem {
 	name: string;
 	link: string;
+	hover?: string;
 }
 
 const navItems: Array<navItem> = [
@@ -45,12 +46,14 @@ const navItems: Array<navItem> = [
 	//   link:"/thelist"
 	// },
 	{
-		name: "Memories Unlocked",
-		link: "/memories",
-	},
-	{
 		name: "Reflect and Remember",
 		link: "/share",
+		hover: "Read the Tributes to Your Fallen Brothers",
+	},
+	{
+		name: "Memories Unlocked",
+		link: "/memories",
+		hover: "Record Tributes for Your Fallen Brother",
 	},
 ];
 
@@ -59,12 +62,26 @@ function Navbar(props) {
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [logo, setLogo] = React.useState(false);
 	const [selected, setSelected] = React.useState(5);
+	const [hoverNavShown, setHoverNavShown] = React.useState(false);
+	const [hoverMessage, setHoverMessage] = React.useState("");
 	const router = useRouter();
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
 	};
 	React.useEffect(() => {
 		navItems.map((item, index) => {
+			if (item.hover) {
+				const button = document.getElementById(item.name);
+				const showMessage = () => {
+					setHoverNavShown(true);
+					setHoverMessage(item.hover);
+				};
+				const hideMessage = () => {
+					setHoverNavShown(false);
+				};
+				button.addEventListener("mouseenter", showMessage);
+				button.addEventListener("mouseleave", hideMessage);
+			}
 			if (item.link == location.pathname) {
 				setSelected(index);
 			}
@@ -106,6 +123,7 @@ function Navbar(props) {
 						<Box sx={styles.links}>
 							{navItems.map((item, index) => (
 								<Button
+									id={item.name}
 									key={item.name}
 									sx={
 										selected != index
@@ -127,6 +145,20 @@ function Navbar(props) {
 							<MenuIcon fontSize="large" />
 						</IconButton>
 					</Toolbar>
+					<Typography
+						display={hoverNavShown ? "block" : "none"}
+						sx={{
+							width:
+								hoverMessage == "Read the Tributes to Your Fallen Brothers"
+									? "80vw"
+									: "90vw",
+							textAlign: "right",
+							color: colors.bloodRed,
+						}}
+						variant="subtitle2"
+					>
+						{hoverMessage}
+					</Typography>
 				</AppBar>
 			</ElevationScroll>
 			<Box component="nav">

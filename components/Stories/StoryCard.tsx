@@ -53,7 +53,11 @@ export default function StoryCard(props: StoryCardProps) {
 	return (
 		<Card sx={styles.card}>
 			<CardActionArea onClick={handleCardClick}>
-				<CardMedia sx={styles.avatar} image={props.story.image} />
+				<CardMedia
+					component={"img"}
+					sx={styles.avatar}
+					image={props.story.image}
+				/>
 				<CardContent>
 					<Typography sx={styles.name}>{props.story.officer}</Typography>
 					<Box sx={{ display: "flex", ml: 1 }}>

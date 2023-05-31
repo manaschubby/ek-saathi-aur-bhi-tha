@@ -28,7 +28,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 800,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 		zIndex: 100,
 	},
 	cardView: {
@@ -57,9 +57,10 @@ const styles: Record<any, SxProps> = {
 	},
 	avatar: {
 		mx: "auto",
-		height: 250,
 		borderColor: colors.black,
 		border: "solid",
+		maxHeight: 250,
+		objectFit: "contain",
 		borderWidth: "1px",
 	},
 	name: {
@@ -68,7 +69,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 800,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 	desc: {
 		textAlign: "center",
@@ -91,7 +92,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 400,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 	parameter_value: {
 		fontSize: { xs: "1rem", sm: "1.25rem" },
@@ -99,7 +100,7 @@ const styles: Record<any, SxProps> = {
 		fontFamily: "Cabin",
 		fontWeight: 600,
 		textAlign: "center",
-		textTransform: "capitalize",
+		textTransform: "uppercase",
 	},
 	form: {
 		minWidth: "80vw",

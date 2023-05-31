@@ -12,7 +12,7 @@ const styles: Record<any, SxProps> = {
 		backgroundSize: "cover",
 	},
 	mainPanelGrid: {
-		mt: { xs: -7, sm: -7, md: 5 },
+		mt: { xs: -7, sm: -7, md: -7, lg: 5 },
 		maxWidth: { xs: "100vw", sm: "60vw" },
 		display: "flex",
 		flexDirection: "column",
