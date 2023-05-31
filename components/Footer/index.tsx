@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { styles } from "./styles";
 import colors from "../../utils/colors";
 import axios from "axios";
-import { Mail } from "@mui/icons-material";
+import { LinkedIn, Mail } from "@mui/icons-material";
 
 export default function Footer() {
 	const nameRef = useRef<HTMLInputElement>();
@@ -74,7 +74,9 @@ export default function Footer() {
 						href="https://www.linkedin.com/in/manas-ashwin-053755224/"
 						target="none"
 					>
-						<u>Manas Ashwin</u>
+						<u>
+							Manas Ashwin <LinkedIn fontSize="small" />
+						</u>
 					</a>
 				</b>
 			</Box>
