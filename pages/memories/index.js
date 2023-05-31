@@ -8,10 +8,19 @@ import StoryCard from "../../components/Stories/StoryCard";
 import useData from "../../hooks/useData";
 import Stories from "../../components/Stories/";
 import Footer from "../../components/Footer";
+import Head from "next/head";
 const Index = () => {
 	const { stories } = useData();
 	return (
 		<div>
+			<Head>
+				<title>एक साथी और भी था</title>
+				<meta
+					name="description"
+					content="Memorial of the band of brothers. IMA Summer of '98."
+				/>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			<Template />
 			<Box sx={styles.main}>
 				<Typography sx={styles.heading}>MEMORIES</Typography>

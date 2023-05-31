@@ -18,6 +18,7 @@ import Stories from "../../components/Stories/";
 import { OfficerCardProps } from "../../components/Officers/types";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import Head from "next/head";
 const Share = () => {
 	const { officers, loading } = useData();
 	const [sending, setSending] = useState<boolean>(false);
@@ -71,6 +72,14 @@ const Share = () => {
 	};
 	return (
 		<div>
+			<Head>
+				<title>एक साथी और भी था</title>
+				<meta
+					name="description"
+					content="Memorial of the band of brothers. IMA Summer of '98."
+				/>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			<Template />
 			<Backdrop open={sending}>Saving your tale.</Backdrop>
 			{success && (
@@ -82,8 +91,7 @@ const Share = () => {
 			)}
 			{!loading && (
 				<Box sx={styles.main}>
-					<Typography sx={styles.heading}>TELL A TALE</Typography>
-					<Typography sx={styles.heading}>Share a memory</Typography>
+					<Typography sx={styles.heading}>Reflect and Remember</Typography>
 					<FormControl sx={styles.form}>
 						<TextField
 							InputProps={colorWhite}

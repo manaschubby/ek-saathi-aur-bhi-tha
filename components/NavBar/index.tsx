@@ -45,11 +45,11 @@ const navItems: Array<navItem> = [
 	//   link:"/thelist"
 	// },
 	{
-		name: "Memories",
+		name: "Memories Unlocked",
 		link: "/memories",
 	},
 	{
-		name: "Tell a Tale",
+		name: "Reflect and Remember",
 		link: "/share",
 	},
 ];

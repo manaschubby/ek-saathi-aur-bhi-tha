@@ -20,7 +20,7 @@ const MainLandingPanel = () => {
 	const [plays, setPlays] = useState<Number>();
 	const [playing, setPlaying] = useState(false);
 	const [played, setPlayed] = useState(false);
-	const [title, setTitle] = useState("EK SAATHI AUR BHI THA");
+	const [title, setTitle] = useState("एक साथी और भी था");
 	useEffect(() => {
 		refresh();
 	}, []);
