@@ -9,28 +9,7 @@ export default function Footer() {
 	const nameRef = useRef<HTMLInputElement>();
 	const phoneNumber = useRef<HTMLInputElement>();
 	const messageRef = useRef<HTMLInputElement>();
-	const handleSave = () => {
-		if (
-			nameRef.current.value.trim() === "" ||
-			phoneNumber.current.value.trim() === "" ||
-			messageRef.current.value.trim() === ""
-		) {
-			return alert("Enter all required fields");
-		}
-		if (!phoneNumber.current.value.trim().match(/^\d{10}$/)) {
-			return alert("Please enter valid phone number");
-		}
-		axios
-			.post("/api/contactus", {
-				name: nameRef.current.value.trim(),
-				phone: phoneNumber.current.value.trim(),
-				message: messageRef.current.value.trim(),
-			})
-			.then(() => {
-				alert("Sent successfuly");
-				window.location.reload();
-			});
-	};
+
 	return (
 		<Box>
 			<Box sx={styles.footerPanel}>
@@ -40,7 +19,7 @@ export default function Footer() {
 					</Typography>
 					<Link
 						sx={styles.footerLink}
-						href="mailto:ek.saathi.aur.bhi.tha@gmail.com"
+						href="mailto:ek.saathi.aur.bhi.tha.102@gmail.com"
 					>
 						<Mail />
 					</Link>
@@ -71,20 +50,6 @@ export default function Footer() {
 					>
 						National War Memorial
 					</Link>
-					<Link
-						sx={styles.footerLink}
-						href="https://indianarmy.nic.in/Site/FormTemplete/frmTempSimple.aspx?MnId=kD7Y5w9NjPwstN1li7RZig==&ParentID=3gWV+IxPb+ImTzXrsmGYEQ=="
-						target="none"
-					>
-						MARTYRS INDIAN ARMY PAGE
-					</Link>
-					<Link
-						sx={styles.footerLink}
-						href="https://indianarmy.nic.in/explore-army/war-memorial"
-						target="none"
-					>
-						WAR MEMORIALS across the country
-					</Link>
 					<Link sx={styles.footerLink} href="/admin">
 						Admin Page
 					</Link>
@@ -105,7 +70,10 @@ export default function Footer() {
 			>
 				<b>
 					© 2023 Manas Producers. Website developed and maintained by{" "}
-					<a href="https://www.linkedin.com/in/manas-ashwin-053755224/">
+					<a
+						href="https://www.linkedin.com/in/manas-ashwin-053755224/"
+						target="none"
+					>
 						<u>Manas Ashwin</u>
 					</a>
 				</b>
