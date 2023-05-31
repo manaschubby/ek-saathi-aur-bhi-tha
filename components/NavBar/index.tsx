@@ -48,12 +48,12 @@ const navItems: Array<navItem> = [
 	{
 		name: "Reflect and Remember",
 		link: "/share",
-		hover: "Read the Tributes to Your Fallen Brothers",
+		hover: "Record Tributes for Your Fallen Brother".toUpperCase(),
 	},
 	{
 		name: "Memories Unlocked",
 		link: "/memories",
-		hover: "Record Tributes for Your Fallen Brother",
+		hover: "Read the Tributes to Your Fallen Brothers".toUpperCase(),
 	},
 ];
 
@@ -149,7 +149,8 @@ function Navbar(props) {
 						display={hoverNavShown ? "block" : "none"}
 						sx={{
 							width:
-								hoverMessage == "Read the Tributes to Your Fallen Brothers"
+								hoverMessage ==
+								"Record Tributes for Your Fallen Brother".toUpperCase()
 									? "80vw"
 									: "90vw",
 							textAlign: "right",

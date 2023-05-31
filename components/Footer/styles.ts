@@ -24,10 +24,10 @@ export const styles: Record<any, SxProps> = {
 		gap: 2,
 		textAlign: "center",
 		textTransform: "uppercase",
+		backdropFilter: "blur(7px)",
 	},
 	footerLink: {
 		color: "#ffffff",
 		textDecoration: "none !important",
-		mixBlendMode: "difference",
 	},
 };

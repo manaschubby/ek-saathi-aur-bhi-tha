@@ -117,7 +117,7 @@ const Share = () => {
 							{officers.map((officer: OfficerCardProps) => {
 								return (
 									<MenuItem key={officer._id} value={officer._id}>
-										{officer.rank} {officer.name}
+										{officer.rank.toUpperCase()} {officer.name.toUpperCase()}
 									</MenuItem>
 								);
 							})}

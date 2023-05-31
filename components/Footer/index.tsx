@@ -96,17 +96,19 @@ export default function Footer() {
 					bottom: 0,
 					width: "100vw",
 					height: "max-content",
-					p: 0.5,
+					p: 0.75,
 					color: colors.bloodRed,
 					backgroundColor: colors.battleshipGray,
 					textAlign: "center",
-					fontSize: "0.75rem",
+					fontSize: "1rem",
 				}}
 			>
-				© 2023 Manas Producers. Website developed and maintained by{" "}
-				<a href="https://www.linkedin.com/in/manas-ashwin-053755224/">
-					<b>Manas Ashwin</b>
-				</a>
+				<b>
+					© 2023 Manas Producers. Website developed and maintained by{" "}
+					<a href="https://www.linkedin.com/in/manas-ashwin-053755224/">
+						<u>Manas Ashwin</u>
+					</a>
+				</b>
 			</Box>
 		</Box>
 	);
