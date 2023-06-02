@@ -48,7 +48,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 		axios
 			.put(`/api/officers/?id=${props.officer._id}`, officer, {
 				headers: {
-					Authorization: "AdminPage",
+					Authorization: process.env.NEXT_PUBLIC_AUTH_KEY,
 				},
 			})
 			.then((response) => {
@@ -64,7 +64,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 		axios
 			.post(`/api/officers`, officer, {
 				headers: {
-					Authorization: "AdminPage",
+					Authorization: process.env.NEXT_PUBLIC_AUTH_KEY,
 				},
 			})
 			.then((response) => {
@@ -110,7 +110,6 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 			console.log(officer);
 			setLoading(true);
 			if (image != "") {
-				console.log(process.env.PUBLICKEY);
 				const onProgress = ({ isComputable, value }) => {
 					alert(
 						`Uploading has started. Window will reload on succesfull upload. Progress = ${value}%`
@@ -135,7 +134,7 @@ export default function OfficerPopUp(props: OfficerPopUpProps) {
 					id: props.officer._id,
 				},
 				headers: {
-					Authorization: "admin",
+					Authorization: process.env.AUTH_KEY,
 				},
 			})
 			.then(() => {

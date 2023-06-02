@@ -17,6 +17,8 @@ export default function OfficerCard(props: OfficerCardProps) {
 	const handleCardClick = () => {
 		if (props.onClick) {
 			props.onClick(props);
+		} else {
+			router.push("/officer/" + props._id);
 		}
 	};
 	return (

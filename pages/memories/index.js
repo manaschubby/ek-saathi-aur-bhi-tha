@@ -10,7 +10,7 @@ import Stories from "../../components/Stories/";
 import Footer from "../../components/Footer";
 import Head from "next/head";
 const Index = () => {
-	const { stories, loading } = useData();
+	const { stories, storiesLoaded } = useData();
 	return (
 		<div>
 			<Head>
@@ -24,9 +24,11 @@ const Index = () => {
 			<Template />
 			<Box sx={styles.main}>
 				<Typography sx={styles.heading}>MEMORIES</Typography>
-				{loading && <Typography variant="h3">Loading Memories</Typography>}
+				{!storiesLoaded && (
+					<Typography variant="h3">Loading Memories...</Typography>
+				)}
 				<Container sx={styles.cardView} component={"div"}>
-					{stories && <Stories stories={stories} verified />}
+					{storiesLoaded && <Stories stories={stories} verified />}
 				</Container>
 			</Box>
 			<Footer />

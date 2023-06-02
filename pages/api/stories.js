@@ -38,31 +38,39 @@ export default async function handler(req, res) {
 			}
 			break;
 		case "PUT":
-			if (req.query["id"]) {
-				// The "id" parameter exists in the URL
-				const { id } = req.query;
-				try {
-					const stories = await Story.findByIdAndUpdate(id, req.body);
-					res.status(200).json(stories);
-				} catch (err) {
-					res.status(500).json({ error: "Server error" });
+			if (req.headers.authorization == process.env.NEXT_PUBLIC_AUTH_KEY) {
+				if (req.query["id"]) {
+					// The "id" parameter exists in the URL
+					const { id } = req.query;
+					try {
+						const stories = await Story.findByIdAndUpdate(id, req.body);
+						res.status(200).json(stories);
+					} catch (err) {
+						res.status(500).json({ error: "Server error" });
+					}
 				}
+			} else {
+				res.status(400).send("Unauthorized");
 			}
 			break;
 		case "DELETE":
-			if (req.query["id"]) {
-				// The "id" parameter exists in the URL
-				const { id } = req.query;
-				try {
-					const stories = await Story.findByIdAndDelete(id);
-					res.status(200).json(stories);
-				} catch (err) {
-					res.status(500).json({ error: "Server error" });
+			if (req.headers.authorization == process.env.NEXT_PUBLIC_AUTH_KEY) {
+				if (req.query["id"]) {
+					// The "id" parameter exists in the URL
+					const { id } = req.query;
+					try {
+						const stories = await Story.findByIdAndDelete(id);
+						res.status(200).json(stories);
+					} catch (err) {
+						res.status(500).json({ error: "Server error" });
+					}
 				}
+			} else {
+				res.status(400).send("Unauthorized");
 			}
 			break;
 		default:
-			res.setHeader("Allow", ["GET", "POST", "DELETE"]);
+			res.setHeader("Allow", ["GET", "POST", "DELETE", "PUT"]);
 			res.status(405).end(`Method ${method} Not Allowed`);
 	}
 }

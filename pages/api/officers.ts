@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res) {
 			break;
 
 		case "POST":
-			if (req.headers.authorization) {
+			if (req.headers.authorization == process.env.NEXT_PUBLIC_AUTH_KEY) {
 				try {
 					const newOfficer = new Officer(req.body);
 
@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res) {
 			break;
 
 		case "PUT":
-			if (req.headers.authorization) {
+			if (req.headers.authorization == process.env.NEXT_PUBLIC_AUTH_KEY) {
 				try {
 					const officer = await Officer.findByIdAndUpdate(
 						req.query.id,
@@ -79,20 +79,24 @@ export default async function handler(req: NextApiRequest, res) {
 			break;
 
 		case "DELETE":
-			try {
-				const officer = await Officer.findOneAndDelete(req.query.id);
+			if (req.headers.authorization == process.env.NEXT_PUBLIC_AUTH_KEY) {
+				try {
+					const officer = await Officer.findOneAndDelete(req.query.id);
 
-				if (!officer) {
-					return res.status(404).json({ msg: "Officer not found" });
-				}
+					if (!officer) {
+						return res.status(404).json({ msg: "Officer not found" });
+					}
 
-				res.status(200).json({ msg: "Officer removed", officer: officer });
-			} catch (err) {
-				console.error(err.message);
-				if (err.kind === "ObjectId") {
-					return res.status(404).json({ msg: "Officer not found" });
+					res.status(200).json({ msg: "Officer removed", officer: officer });
+				} catch (err) {
+					console.error(err.message);
+					if (err.kind === "ObjectId") {
+						return res.status(404).json({ msg: "Officer not found" });
+					}
+					res.status(500).send("Server Error");
 				}
-				res.status(500).send("Server Error");
+			} else {
+				res.status(400).send("Unauthorized");
 			}
 			break;
 	}

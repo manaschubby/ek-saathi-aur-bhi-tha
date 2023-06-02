@@ -97,14 +97,27 @@ const MainLandingPanel = () => {
 							<SVG />
 						</Box>
 					) : playing ? (
-						<>
+						<Box
+							sx={{
+								backgroundImage: 'url("/assets/Last-Post.jpg")',
+								backgroundSize: "cover",
+								backgroundPosition: "center",
+								width: 150,
+								height: 150,
+							}}
+						>
 							<Image
 								src={"/assets/loading.gif"}
 								alt="loading"
-								width={50}
-								height={50}
+								width={100}
+								height={100}
+								style={{
+									position: "relative",
+									top: "30%",
+									mixBlendMode: "darken",
+								}}
 							/>{" "}
-						</>
+						</Box>
 					) : (
 						<>
 							<PlayArrowSharp sx={{ mr: 2 }} />

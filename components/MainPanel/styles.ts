@@ -50,6 +50,7 @@ const styles: Record<any, SxProps> = {
 	},
 	playButtonPlayed: {
 		fontSize: { xs: 8, sm: 15 },
+		p: 0,
 		width: "max-content",
 		backgroundColor: "white",
 		":hover": {

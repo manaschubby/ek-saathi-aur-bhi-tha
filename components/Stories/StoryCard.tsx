@@ -24,6 +24,9 @@ export default function StoryCard(props: StoryCardProps) {
 		axios
 			.delete("/api/stories", {
 				params: { id: props.story._id },
+				headers: {
+					Authorization: process.env.AUTH_KEY,
+				},
 			})
 			.then((response) => {
 				window.location.reload();
@@ -41,6 +44,9 @@ export default function StoryCard(props: StoryCardProps) {
 				{
 					params: {
 						id: props.story._id,
+					},
+					headers: {
+						Authorization: process.env.AUTH_KEY,
 					},
 				}
 			)

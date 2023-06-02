@@ -33,6 +33,7 @@ export default function useData(
 	const [officers, setOfficers] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [stories, setStories] = useState<Array<Story>>();
+	const [storiesLoaded, setStoriesLoaded] = useState(false);
 	const loadOfficers = () => {
 		axios.get("/api/officers").then((response) => {
 			setOfficers(response.data);
@@ -48,6 +49,7 @@ export default function useData(
 			let stories = response.data;
 			validateOfficers(stories).then((stories) => {
 				setStories(stories);
+				setStoriesLoaded(true);
 			});
 		});
 	};
@@ -69,5 +71,6 @@ export default function useData(
 		officers,
 		stories,
 		loading,
+		storiesLoaded,
 	};
 }

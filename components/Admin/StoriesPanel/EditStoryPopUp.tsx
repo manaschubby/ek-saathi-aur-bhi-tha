@@ -42,7 +42,7 @@ export default function EditStoryPopUp(props: EditStoryPopUpProps) {
 						id: story._id,
 					},
 					headers: {
-						Authorization: "Admin",
+						Authorization: process.env.NEXT_PUBLIC_AUTH_KEY,
 					},
 				}
 			)
