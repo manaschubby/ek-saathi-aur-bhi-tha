@@ -83,24 +83,25 @@ const Officer = () => {
 										py: 2,
 									}}
 								>
+									<Typography
+										variant={"h6"}
+										textAlign={"justify"}
+										textTransform={"initial"}
+										color={colors.black}
+										py={2}
+										lineHeight={1.25}
+									>
+										<b>{story.body}</b>
+									</Typography>
 									<CardMedia>
-										<Typography variant="h5" textAlign={"center"}>
+										<Typography variant="body1" textAlign={"left"}>
 											Author: <b>{story.author}</b>
 										</Typography>
-										<Typography variant="h6" textAlign={"center"}>
+										<Typography variant="body2" textAlign={"left"}>
 											Written on:{" "}
 											<b>{story.createdAt.toString().slice(0, 10)}</b>
 										</Typography>
 									</CardMedia>
-									<Typography
-										variant={"body1"}
-										textAlign={"justify"}
-										textTransform={"initial"}
-										color={colors.black}
-										pt={2}
-									>
-										<b>{story.body}</b>
-									</Typography>
 								</Card>
 							);
 						})}
