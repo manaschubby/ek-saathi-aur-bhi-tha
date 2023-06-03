@@ -13,29 +13,36 @@ export default function useOfficer() {
 	const [officer, setOfficer] = useState<OfficerCardProps>();
 	const router = useRouter();
 
-	const id = router.query.officer;
+	const query = router.query;
 	useEffect(() => {
-		axios
-			.get("/api/officers?id=" + id)
-			.then((response) => {
-				setOfficer(response.data);
-				setOfficerLoaded(true);
-			})
-			.catch((reason) => {
-				setNoOfficer(true);
-				console.log(reason);
-			});
-		axios
-			.get("/api/stories", {
-				params: {
-					officer_id: id,
-				},
-			})
-			.then((response) => {
-				setStories(response.data);
-				setStoriesLoaded(true);
-			});
-	}, []);
+		console.log(query);
+		if (!storiesLoaded && !officerLoaded) {
+			if (query.officer) {
+				console.log("hey");
+				const id = query.officer;
+				axios
+					.get("/api/officers?id=" + id)
+					.then((response) => {
+						setOfficer(response.data);
+						setOfficerLoaded(true);
+					})
+					.catch((reason) => {
+						setNoOfficer(true);
+						console.log(reason);
+					});
+				axios
+					.get("/api/stories", {
+						params: {
+							officer_id: id,
+						},
+					})
+					.then((response) => {
+						setStories(response.data);
+						setStoriesLoaded(true);
+					});
+			}
+		}
+	});
 	useEffect(() => {
 		if (noOfficer) {
 			router.push("/");

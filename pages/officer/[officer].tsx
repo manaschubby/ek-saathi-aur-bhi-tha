@@ -111,9 +111,4 @@ const Officer = () => {
 	);
 };
 
-export async function getServerSideProps() {
-	console.log("hey");
-	return { props: { msg: "hey" } };
-}
-
 export default Officer;
