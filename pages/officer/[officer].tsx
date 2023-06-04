@@ -155,7 +155,7 @@ const Officer = () => {
 											</Typography>
 											{image.officers.map((officer, index) => {
 												return (
-													<Typography variant="h6">
+													<Typography key={index} variant="h6">
 														<b>
 															{officer.rank} {officer.name}
 														</b>
