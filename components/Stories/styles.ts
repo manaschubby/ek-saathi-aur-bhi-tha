@@ -39,7 +39,6 @@ const styles: Record<any, SxProps> = {
 		justifyContent: "center",
 		flexWrap: "nowrap",
 		flexFlow: "wrap",
-		overflow: "hidden",
 		scrollbarWidth: "none",
 	},
 	card: {
@@ -103,7 +102,7 @@ const styles: Record<any, SxProps> = {
 		textTransform: "uppercase",
 	},
 	form: {
-		minWidth: "80vw",
+		width: "80vw",
 		display: "flex",
 		flexDirection: "column",
 		backdropFilter: "blur(20px)",

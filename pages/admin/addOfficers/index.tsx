@@ -13,7 +13,7 @@ export default function AddOfficers() {
 	return (
 		<Box>
 			<Template />
-			{!verifying && !loading && (
+			{!verifying.verifying && verifying.admin && !loading && (
 				<OfficerPanel setReload={setReload} officers={officers} />
 			)}
 		</Box>

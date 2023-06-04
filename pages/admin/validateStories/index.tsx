@@ -12,7 +12,7 @@ export default function ValidateStories() {
 	return (
 		<Box>
 			<Template />
-			{!verifying && !loading && (
+			{verifying.admin && !loading && (
 				<StoriesPanel setReload={setReload} stories={stories} />
 			)}
 		</Box>

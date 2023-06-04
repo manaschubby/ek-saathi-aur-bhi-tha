@@ -11,7 +11,7 @@ export default function Login() {
 	return (
 		<Box>
 			<Template />
-			{!verifying && <LoginPanel />}
+			{!verifying.verifying && !verifying.admin && <LoginPanel />}
 		</Box>
 	);
 }

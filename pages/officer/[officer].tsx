@@ -18,7 +18,8 @@ import { list } from "../../components/Officers/OfficerCard/list";
 import Footer from "../../components/Footer";
 
 const Officer = () => {
-	const { officer, officerLoaded, stories, storiesLoaded } = useOfficer();
+	const { officer, officerLoaded, stories, storiesLoaded, images } =
+		useOfficer();
 	return (
 		<div>
 			<Head>
@@ -105,6 +106,67 @@ const Officer = () => {
 								</Card>
 							);
 						})}
+					{images && images.length > 0 && (
+						<>
+							<Typography variant="h4" pt={5} color={colors.bloodRed}>
+								Photos
+							</Typography>
+
+							{images.map((image, index) => {
+								return (
+									<Card
+										key={index}
+										sx={{
+											width: "80vw",
+											display: "flex",
+											flexDirection: "column",
+											backdropFilter: "blur(10px)",
+											mt: 5,
+											px: 4,
+											py: 2,
+										}}
+									>
+										<CardMedia
+											src={image.image}
+											component={"img"}
+											sx={{
+												mx: "auto",
+												maxHeight: 250,
+												objectFit: "contain",
+												borderWidth: "1px",
+											}}
+										/>
+										<CardContent
+											sx={{
+												display: "flex",
+												flexWrap: "nowrap",
+												flexFlow: "wrap",
+												overflow: "hidden",
+											}}
+										>
+											<Typography variant="h6" fontWeight={100}>
+												Officers in this image:{" "}
+											</Typography>
+											{image.officers.map((officer, index) => {
+												return (
+													<Typography variant="h6">
+														<b>
+															{officer.rank} {officer.name}
+														</b>
+														{index == image.officers.length - 1 ? (
+															<></>
+														) : (
+															<>, </>
+														)}
+													</Typography>
+												);
+											})}
+										</CardContent>
+									</Card>
+								);
+							})}
+						</>
+					)}
 				</Box>
 			)}
 			<Footer />

@@ -2,8 +2,12 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-export default function useVerify(currRoute = "/admin/addOfficers"): boolean {
+export default function useVerify(currRoute = "/admin/addOfficers"): {
+	verifying: boolean;
+	admin: boolean;
+} {
 	const [verifying, setVerifying] = useState(true);
+	const [admin, setAdmin] = useState(false);
 	const router = useRouter();
 	useEffect(() => {
 		const account = localStorage.getItem("ek-saathi-token");
@@ -30,6 +34,7 @@ export default function useVerify(currRoute = "/admin/addOfficers"): boolean {
 			.then((response) => {
 				if (response.data.verified) {
 					setVerifying(false);
+					setAdmin(true);
 					if (!window.location.pathname.endsWith(currRoute)) {
 						router.push(currRoute);
 					}
@@ -38,7 +43,7 @@ export default function useVerify(currRoute = "/admin/addOfficers"): boolean {
 					return reRoute();
 				}
 			});
-	});
+	}, []);
 
-	return verifying;
+	return { verifying, admin };
 }

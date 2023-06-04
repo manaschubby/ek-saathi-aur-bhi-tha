@@ -4,6 +4,7 @@ import { OfficerCardProps } from "../components/Officers/types";
 import { Story } from "../components/Stories/types";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
+import { Image } from "../components/Admin/ImagesPanel";
 
 export default function useOfficer() {
 	const [officerLoaded, setOfficerLoaded] = useState(false);
@@ -11,6 +12,7 @@ export default function useOfficer() {
 	const [noOfficer, setNoOfficer] = useState(false);
 	const [stories, setStories] = useState<Array<Story>>();
 	const [officer, setOfficer] = useState<OfficerCardProps>();
+	const [images, setImages] = useState<Array<Image>>();
 	const router = useRouter();
 
 	const query = router.query;
@@ -40,6 +42,15 @@ export default function useOfficer() {
 						setStories(response.data);
 						setStoriesLoaded(true);
 					});
+				axios
+					.get("/api/images", {
+						params: {
+							officer_id: id,
+						},
+					})
+					.then((response) => {
+						setImages(response.data);
+					});
 			}
 		}
 	});
@@ -55,5 +66,6 @@ export default function useOfficer() {
 		noOfficer,
 		officerLoaded,
 		storiesLoaded,
+		images,
 	};
 }
