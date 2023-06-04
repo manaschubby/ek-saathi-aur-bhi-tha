@@ -55,6 +55,10 @@ const navItems: Array<navItem> = [
 		link: "/memories",
 		hover: "Read the Tributes to Your Fallen Brothers".toUpperCase(),
 	},
+	{
+		name: "Share Photos",
+		link: "/uploadImages",
+	},
 ];
 
 function Navbar(props) {

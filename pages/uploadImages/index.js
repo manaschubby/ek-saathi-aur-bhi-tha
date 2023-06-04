@@ -5,8 +5,10 @@ import {
 	Backdrop,
 	Box,
 	Button,
+	CircularProgress,
 	Container,
 	FormControl,
+	LinearProgress,
 	MenuItem,
 	Select,
 	TextField,
@@ -18,6 +20,7 @@ import axios from "axios";
 import Footer from "../../components/Footer";
 import Head from "next/head";
 import { client } from "../../client";
+import colors from "../../utils/colors";
 const UploadImages = () => {
 	const { officers, loading } = useData();
 	const [sending, setSending] = useState(false);
@@ -36,39 +39,30 @@ const UploadImages = () => {
 		}
 		setSending(true);
 		if (image != "") {
-			const onProgress = ({ isComputable, value }) => {
-				alert(
-					`Uploading has started. Window will reload on succesfull upload. Progress = ${
-						value * 100
-					}%`
-				);
-			};
-			client
-				.uploadFile(fileInputRef.current.files[0], { onProgress })
-				.then((file) => {
-					const baseURL = "https://ucarecdn.com/";
-					const image = baseURL + file.uuid + "/";
-					axios
-						.post("/api/images", {
-							image: image,
-							officers: selectedOfficers,
-						})
-						.then((response) => {
-							setSending(false);
-							setSelectedOfficers([]);
-							fileInputRef.current.value = "";
-							setSuccess(true);
-							setImage("");
-							setTimeout(() => {
-								setSuccess(false);
-							}, 5000);
-						})
-						.catch((error) => {
-							console.log(error);
-							setSending(false);
-							alert("Error uploading image");
-						});
-				});
+			client.uploadFile(fileInputRef.current.files[0]).then((file) => {
+				const baseURL = "https://ucarecdn.com/";
+				const image = baseURL + file.uuid + "/";
+				axios
+					.post("/api/images", {
+						image: image,
+						officers: selectedOfficers,
+					})
+					.then((response) => {
+						setSending(false);
+						setSelectedOfficers([]);
+						fileInputRef.current.value = "";
+						setSuccess(true);
+						setImage("");
+						setTimeout(() => {
+							setSuccess(false);
+						}, 5000);
+					})
+					.catch((error) => {
+						console.log(error);
+						setSending(false);
+						alert("Error uploading image");
+					});
+			});
 			return;
 		}
 	};
@@ -81,7 +75,11 @@ const UploadImages = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Template />
-			<Backdrop open={sending}>Uploading image...</Backdrop>
+			<Backdrop open={sending} sx={{ zIndex: 1000, color: "#ffffff" }}>
+				<h1>
+					Uploading image... <CircularProgress />
+				</h1>
+			</Backdrop>
 			{success && (
 				<Alert
 					sx={styles.alert}
@@ -114,6 +112,7 @@ const UploadImages = () => {
 							style={{ objectFit: "contain" }}
 							alt="No Image Chosen"
 						/>
+						<Typography>Select Officers</Typography>
 						<Select
 							multiple
 							sx={{

@@ -51,7 +51,10 @@ const Officer = () => {
 				>
 					{officer.image && (
 						<Image
-							src={officer.image}
+							src={
+								officer.image +
+								"-/preview/938x432/-/quality/smart/-/format/auto/"
+							}
 							width={250}
 							height={250}
 							style={{
@@ -127,7 +130,10 @@ const Officer = () => {
 										}}
 									>
 										<CardMedia
-											src={image.image}
+											src={
+												image.image +
+												"-/preview/938x432/-/quality/smart/-/format/auto/"
+											}
 											component={"img"}
 											sx={{
 												mx: "auto",

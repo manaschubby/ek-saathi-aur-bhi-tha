@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import useVerify from "../../hooks/adminVerify";
 import Template from "../template";
+import Link from "next/link";
 
 const Index = () => {
 	const router = useRouter();
@@ -12,15 +13,15 @@ const Index = () => {
 			{verify.admin && (
 				<>
 					<h1>Admin links</h1>
-					<a href="/admin/addOfficers">
+					<Link href="/admin/addOfficers">
 						<h1>Admin Officers</h1>
-					</a>
-					<a href="/admin/validateStories">
+					</Link>
+					<Link href="/admin/validateStories">
 						<h1>Admin Validate Stories</h1>
-					</a>
-					<a href="/admin/validateImages">
+					</Link>
+					<Link href="/admin/validateImages">
 						<h1>Admin Validate Images</h1>
-					</a>
+					</Link>
 				</>
 			)}
 		</div>
