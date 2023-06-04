@@ -25,7 +25,7 @@ export default function StoryCard(props: StoryCardProps) {
 			.delete("/api/stories", {
 				params: { id: props.story._id },
 				headers: {
-					Authorization: process.env.AUTH_KEY,
+					Authorization: process.env.NEXT_PUBLIC_AUTH_KEY,
 				},
 			})
 			.then((response) => {
@@ -46,7 +46,7 @@ export default function StoryCard(props: StoryCardProps) {
 						id: props.story._id,
 					},
 					headers: {
-						Authorization: process.env.AUTH_KEY,
+						Authorization: process.env.NEXT_PUBLIC_AUTH_KEY,
 					},
 				}
 			)
