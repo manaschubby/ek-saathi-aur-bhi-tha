@@ -62,7 +62,10 @@ export default function StoryCard(props: StoryCardProps) {
 				<CardMedia
 					component={"img"}
 					sx={styles.avatar}
-					image={props.story.image}
+					image={
+						props.story.image +
+						"-/preview/938x432/-/quality/smart/-/format/auto/"
+					}
 				/>
 				<CardContent>
 					<Typography sx={styles.name}>{props.story.officer}</Typography>
