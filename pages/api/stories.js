@@ -23,8 +23,9 @@ export default async function handler(req, res) {
 				try {
 					const stories = await Story.find().sort({ createdAt: "desc" });
 					const sendingStories = [];
+					const allOfficers = await Officer.find();
 					for (const story of stories) {
-						const offr = await Officer.findById(story.officer);
+						const offr = allOfficers.find((offr) => offr._id == story.officer);
 						if (offr.image) {
 							offr.image =
 								offr.image + "-/preview/938x432/-/quality/smart/-/format/auto/";
