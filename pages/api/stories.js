@@ -1,6 +1,6 @@
 import Story from "../../backend/models/story";
 import connectDB from "../../backend/middleware/database";
-
+import { Officer } from "../../backend/models/officer";
 connectDB();
 
 export default async function handler(req, res) {
@@ -22,7 +22,26 @@ export default async function handler(req, res) {
 			} else {
 				try {
 					const stories = await Story.find().sort({ createdAt: "desc" });
-					res.status(200).json(stories);
+					const sendingStories = [];
+					for (const story of stories) {
+						const offr = await Officer.findById(story.officer);
+						if (offr.image) {
+							offr.image =
+								offr.image + "-/preview/938x432/-/quality/smart/-/format/auto/";
+						}
+						const sendingStory = {
+							createdAt: story.createdAt,
+							body: story.body,
+							author: story.author,
+							verified: story.verified,
+							email: story.email,
+							_id: story._id,
+							image: offr.image,
+							officer: offr.rank + " " + offr.name,
+						};
+						sendingStories.push(sendingStory);
+					}
+					res.status(200).json(sendingStories);
 				} catch (err) {
 					res.status(500).json({ error: "Server error" });
 				}

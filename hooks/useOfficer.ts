@@ -13,6 +13,7 @@ export default function useOfficer() {
 	const [stories, setStories] = useState<Array<Story>>();
 	const [officer, setOfficer] = useState<OfficerCardProps>();
 	const [images, setImages] = useState<Array<Image>>();
+	const [imagesLoaded, setImagesLoaded] = useState(false);
 	const router = useRouter();
 
 	const query = router.query;
@@ -50,6 +51,7 @@ export default function useOfficer() {
 					})
 					.then((response) => {
 						setImages(response.data);
+						setImagesLoaded(true);
 					});
 			}
 		}
@@ -67,5 +69,6 @@ export default function useOfficer() {
 		officerLoaded,
 		storiesLoaded,
 		images,
+		imagesLoaded,
 	};
 }

@@ -27,6 +27,7 @@ export default function OfficerCard(props: OfficerCardProps) {
 				<CardMedia
 					component={"img"}
 					sx={styles.avatar}
+					loading="lazy"
 					image={
 						props.image
 							? props.image + "-/preview/938x432/-/quality/smart/-/format/auto/"

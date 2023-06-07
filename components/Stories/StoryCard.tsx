@@ -62,6 +62,7 @@ export default function StoryCard(props: StoryCardProps) {
 				<CardMedia
 					component={"img"}
 					sx={styles.avatar}
+					loading="lazy"
 					image={
 						props.story.image +
 						"-/preview/938x432/-/quality/smart/-/format/auto/"

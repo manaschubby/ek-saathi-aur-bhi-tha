@@ -5,11 +5,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import useOfficer from "../../hooks/useOfficer";
 import {
+	Backdrop,
 	Box,
 	Card,
 	CardContent,
 	CardHeader,
 	CardMedia,
+	CircularProgress,
 	Typography,
 } from "@mui/material";
 import colors from "../../utils/colors";
@@ -18,8 +20,14 @@ import { list } from "../../components/Officers/OfficerCard/list";
 import Footer from "../../components/Footer";
 
 const Officer = () => {
-	const { officer, officerLoaded, stories, storiesLoaded, images } =
-		useOfficer();
+	const {
+		officer,
+		officerLoaded,
+		stories,
+		storiesLoaded,
+		images,
+		imagesLoaded,
+	} = useOfficer();
 	return (
 		<div>
 			<Head>
@@ -35,7 +43,7 @@ const Officer = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Template />
-			{officerLoaded && (
+			{officerLoaded && storiesLoaded && imagesLoaded ? (
 				<Box
 					sx={{
 						width: "100vw",
@@ -150,9 +158,11 @@ const Officer = () => {
 												overflow: "hidden",
 											}}
 										>
-											<Typography variant="h6" fontWeight={100}>
-												Officers in this image:{" "}
-											</Typography>
+											{image.officers.length != 1 && (
+												<Typography variant="h6" fontWeight={100}>
+													Officers in this image:{" "}
+												</Typography>
+											)}
 											{image.officers.map((officer, index) => {
 												return (
 													<Typography key={index} variant="h6">
@@ -174,6 +184,11 @@ const Officer = () => {
 						</>
 					)}
 				</Box>
+			) : (
+				<Backdrop open={!(officerLoaded && storiesLoaded && imagesLoaded)}>
+					Loading...
+					<CircularProgress />
+				</Backdrop>
 			)}
 			<Footer />
 		</div>
