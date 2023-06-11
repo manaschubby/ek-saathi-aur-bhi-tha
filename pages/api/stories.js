@@ -12,9 +12,12 @@ export default async function handler(req, res) {
 				// The "id" parameter exists in the URL
 				const { officer_id } = req.query;
 				try {
-					const stories = await Story.find({
+					let stories = await Story.find({
 						officer: officer_id,
 					});
+					stories = stories.filter((value)=>{
+						return value.verified == true
+					})
 					res.status(200).json(stories);
 				} catch (err) {
 					res.status(500).json({ error: "Server error" });
