@@ -11,14 +11,7 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	const { email, password } = req.query;
-	if (req.method == "POST") {
-		const newUser = new Admin({
-			email: email,
-			password: password,
-		});
-		const user = await newUser.save();
-		res.status(201).json(user);
-	} else if (req.query.hasOwnProperty("email")) {
+	if (req.query.hasOwnProperty("email")) {
 		const newLogin = await Admin.findOne({
 			email: email,
 		});
